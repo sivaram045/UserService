@@ -1,6 +1,8 @@
 package com.ecomapp.userservice.Controllers;
 
+import com.ecomapp.userservice.DTOs.LoginDTO;
 import com.ecomapp.userservice.DTOs.SignUpDTO;
+import com.ecomapp.userservice.Models.Token;
 import com.ecomapp.userservice.Models.User;
 import com.ecomapp.userservice.Services.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,10 @@ public class UserController {
         String password = request.getPassword();
 
         return userService.signUp(name, email, password);
+    }
+    @PostMapping("/login")
+    public Token login (@RequestBody LoginDTO request) {
+        return userService.login(request.getEmail(), request.getPassword());
     }
 
     @GetMapping()
