@@ -10,6 +10,10 @@ import java.util.Optional;
 public interface TokenRepository extends JpaRepository<Token, Long> {
     Token save(Token token);
     @Query(value="select * from Token t where t.value = :value" ,nativeQuery = true)
-    Optional<Token> findByValue(String value); //hibernate query not working, need to check
+    Optional<Token> findByValue(String value); //hibernate query not working, need to check --> resolved
+
+    Optional<Token> findByValueAndDeletedEquals(String tkn, boolean isDeleted);
+    //earlier hibernate query not working due to not following naming convention in model classes,
+    // use value instead of Value
 
 }

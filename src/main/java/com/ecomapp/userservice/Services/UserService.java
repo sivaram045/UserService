@@ -80,7 +80,8 @@ public class UserService {
     }
 
     public String logout(String value) {
-        Optional<Token> optionalToken = tokenRepository.findByValue(value);
+        Optional<Token> optionalToken1 = tokenRepository.findByValue(value);
+        Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedEquals(value, false);
 
         if(optionalToken.isEmpty()) {
             //throw invalid token exception
