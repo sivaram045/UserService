@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface TokenRepository extends JpaRepository<Token, Long> {
     Token save(Token token);
+    @Query(value="select * from Token t where t.value = :value" ,nativeQuery = true)
+    Optional<Token> findByValue(String value); //hibernate query not working, need to check
 
-    @Query("select t.Value from Token t where t.Deleted = false")
-    Optional<Token> findTokenByValueAndDeletedEquals(String value, boolean deleted);
 }

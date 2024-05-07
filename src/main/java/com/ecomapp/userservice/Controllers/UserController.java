@@ -1,6 +1,7 @@
 package com.ecomapp.userservice.Controllers;
 
 import com.ecomapp.userservice.DTOs.LoginDTO;
+import com.ecomapp.userservice.DTOs.LogoutDTO;
 import com.ecomapp.userservice.DTOs.SignUpDTO;
 import com.ecomapp.userservice.Models.Token;
 import com.ecomapp.userservice.Models.User;
@@ -30,6 +31,10 @@ public class UserController {
     @PostMapping("/login")
     public Token login (@RequestBody LoginDTO request) {
         return userService.login(request.getEmail(), request.getPassword());
+    }
+    @PostMapping("/logout")
+    public String logout (@RequestBody LogoutDTO request) {
+        return userService.logout(request.getValue());
     }
 
     @GetMapping()
