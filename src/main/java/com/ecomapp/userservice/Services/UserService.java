@@ -79,6 +79,19 @@ public class UserService {
         return token;
     }
 
+    public void logout(String token) {
+        Optional<Token> optionalToken = tokenRepository.
+                findTokenByValue(token);
+
+        if(optionalToken.isEmpty()) {
+            throw new NoSuchElementException("Session Expired, Re-login");
+        }else {
+            Token token1 = optionalToken.get();
+            token1.setDeleted(true);
+            tokenRepository.save(token1);
+        }
+    }
+
     public List<User> getAllUsers() {
         return userRepository.findAllBy();
     }

@@ -1,10 +1,12 @@
 package com.ecomapp.userservice.Controllers;
 
 import com.ecomapp.userservice.DTOs.LoginDTO;
+import com.ecomapp.userservice.DTOs.LogoutDTO;
 import com.ecomapp.userservice.DTOs.SignUpDTO;
 import com.ecomapp.userservice.Models.Token;
 import com.ecomapp.userservice.Models.User;
 import com.ecomapp.userservice.Services.UserService;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +32,10 @@ public class UserController {
     @PostMapping("/login")
     public Token login (@RequestBody LoginDTO request) {
         return userService.login(request.getEmail(), request.getPassword());
+    }
+    @PostMapping("/logout")
+    public void logout(@RequestBody LogoutDTO request) {
+        userService.logout(request.getValue());
     }
 
     @GetMapping()
