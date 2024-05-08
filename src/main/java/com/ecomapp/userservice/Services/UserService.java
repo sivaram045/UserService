@@ -79,17 +79,25 @@ public class UserService {
         return token;
     }
 
-    public void logout(String token) {
-        Optional<Token> optionalToken = tokenRepository.
-                findTokenByValue(token);
+
+    public String logout(String value) {
+        Optional<Token> optionalToken1 = tokenRepository.findByValue(value);
+        Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedEquals(value, false);
 
         if(optionalToken.isEmpty()) {
-            throw new NoSuchElementException("Session Expired, Re-login");
-        }else {
-            Token token1 = optionalToken.get();
-            token1.setDeleted(true);
-            tokenRepository.save(token1);
+            //throw invalid token exception
+            throw new NoSuchElementException("invalid token");
+        }else if(optionalToken.get().isDeleted()) {
+            //throw session expired exception
+            throw new NoSuchElementException("session expired, login again");
         }
+
+        Token token1 = optionalToken.get();
+        token1.setDeleted(true);
+        tokenRepository.save(token1);
+
+        return "Logout Successful";
+
     }
 
     public List<User> getAllUsers() {

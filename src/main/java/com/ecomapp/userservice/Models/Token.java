@@ -1,5 +1,6 @@
 package com.ecomapp.userservice.Models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
@@ -11,7 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class Token extends BaseModel {
-    private String Value;
+    //@Column(name = "Value")
+    private String value;
     private Date expiryDate;
     @ManyToOne
     private User user;

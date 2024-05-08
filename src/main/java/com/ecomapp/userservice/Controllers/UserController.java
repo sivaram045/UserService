@@ -34,8 +34,10 @@ public class UserController {
         return userService.login(request.getEmail(), request.getPassword());
     }
     @PostMapping("/logout")
-    public void logout(@RequestBody LogoutDTO request) {
-        userService.logout(request.getValue());
+
+    public String logout (@RequestBody LogoutDTO request) {
+        return userService.logout(request.getValue());
+
     }
 
     @GetMapping()
