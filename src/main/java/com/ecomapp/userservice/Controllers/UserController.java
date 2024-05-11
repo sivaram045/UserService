@@ -36,6 +36,10 @@ public class UserController {
     public String logout (@RequestBody LogoutDTO request) {
         return userService.logout(request.getValue());
     }
+    @PostMapping("/validate")
+    public User validate (@RequestBody String token) {
+        return userService.validateToken(token);
+    }
 
     @GetMapping()
     public List<User> getAllUsers () {
