@@ -79,6 +79,7 @@ public class UserService {
         return token;
     }
 
+
     public String logout(String value) {
         Optional<Token> optionalToken1 = tokenRepository.findByValue(value); //not using
         Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedEquals(value, false);
@@ -96,6 +97,7 @@ public class UserService {
         tokenRepository.save(token1);
 
         return "Logout Successful";
+
     }
 
     public User validateToken(String token) {
