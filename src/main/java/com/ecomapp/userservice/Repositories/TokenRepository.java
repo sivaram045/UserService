@@ -16,5 +16,4 @@ public interface TokenRepository extends JpaRepository<Token, Long> {
     //earlier hibernate query not working due to not following naming convention in model classes,
     // use value instead of Value
 
-
 }

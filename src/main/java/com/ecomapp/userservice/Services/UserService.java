@@ -81,7 +81,7 @@ public class UserService {
 
 
     public String logout(String value) {
-        Optional<Token> optionalToken1 = tokenRepository.findByValue(value);
+        Optional<Token> optionalToken1 = tokenRepository.findByValue(value); //not using
         Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedEquals(value, false);
 
         if(optionalToken.isEmpty()) {
@@ -98,6 +98,16 @@ public class UserService {
 
         return "Logout Successful";
 
+    }
+
+    public User validateToken(String token) {
+        Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedEquals(token, false);
+
+        if(optionalToken.isEmpty()) {
+            //throw invalid token exception
+            return null;
+        }
+        return optionalToken.get().getUser();
     }
 
     public List<User> getAllUsers() {
