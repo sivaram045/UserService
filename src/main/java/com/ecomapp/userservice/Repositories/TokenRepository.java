@@ -16,9 +16,5 @@ public interface TokenRepository extends JpaRepository<Token, Long> {
     //earlier hibernate query not working due to not following naming convention in model classes,
     // use value instead of Value
 
-<<<<<<< HEAD
-    //@Query("select  from Token t where t.Deleted = false and t.Value = :value")
-    Optional<Token> findTokenByValue(String token);
-=======
->>>>>>> 20e07dd6f5162bb30f3d3a84eedf7fe889138651
+
 }
