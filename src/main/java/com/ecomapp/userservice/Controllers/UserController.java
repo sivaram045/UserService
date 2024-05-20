@@ -39,7 +39,7 @@ public class UserController {
         return userService.logout(request.getValue());
 
     }
-    @PostMapping("/validate")
+    @PostMapping("/validate/{token}")
     public User validate (@RequestBody String token) {
         return userService.validateToken(token);
     }

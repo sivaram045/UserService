@@ -65,27 +65,29 @@ public class SecurityConfig {
         return http.build();
     }
 
+
     @Bean
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
             throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
+                .csrf().disable()
+                .cors().disable()
                 // Form login handles the redirect to the login page from the
                 // authorization server filter chain
                 .formLogin(Customizer.withDefaults());
 
         return http.build();
     }
-
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails userDetails = User.builder() //withDefaultPasswordEncoder()
                 .username("user")
                 .password("$2a$16$AcBmaZLe06Hx5QSL1PVmRev3W3Fuzy..A18THjaUM.AYEcEDoTORC")
-                .roles("USER")
+                .roles("ADMIN")
                 .build();
 
         return new InMemoryUserDetailsManager(userDetails);
@@ -99,10 +101,11 @@ public class SecurityConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client") //change to postman url
-                .postLogoutRedirectUri("http://127.0.0.1:8080/")
+                .redirectUri("https://oauth.pstmn.io/v1/callback") //change to postman url
+                .postLogoutRedirectUri("https://oauth.pstmn.io/v1/callback")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
+                .scope("ADMIN")
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
 

@@ -101,7 +101,9 @@ public class UserService {
     }
 
     public User validateToken(String token) {
-        Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedEquals(token, false);
+        Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedEquals(
+                token,
+                false);
 
         if(optionalToken.isEmpty()) {
             //throw invalid token exception
