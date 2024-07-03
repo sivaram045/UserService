@@ -82,16 +82,16 @@ public class SecurityConfig {
 
         return http.build();
     }
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails userDetails = User.builder() //withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("$2a$16$AcBmaZLe06Hx5QSL1PVmRev3W3Fuzy..A18THjaUM.AYEcEDoTORC")
-//                .roles("ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(userDetails);
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails userDetails = User.builder() //withDefaultPasswordEncoder()
+                .username("user")
+                .password("$2a$16$AcBmaZLe06Hx5QSL1PVmRev3W3Fuzy..A18THjaUM.AYEcEDoTORC")
+                .roles("ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(userDetails);
+    }
 
 //    @Bean
 //    public RegisteredClientRepository registeredClientRepository() {

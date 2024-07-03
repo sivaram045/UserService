@@ -40,7 +40,7 @@ public class UserController {
 
     }
     @PostMapping("/validate/{token}")
-    public User validate (@RequestBody String token) {
+    public User validate (@PathVariable String token) {
         return userService.validateToken(token);
     }
 
