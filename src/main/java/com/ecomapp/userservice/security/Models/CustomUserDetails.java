@@ -2,13 +2,14 @@ package com.ecomapp.userservice.security.Models;
 
 import com.ecomapp.userservice.Models.Role;
 import com.ecomapp.userservice.Models.User;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+@JsonDeserialize
 public class CustomUserDetails implements UserDetails {
     private String password;
     private String username;
@@ -17,6 +18,8 @@ public class CustomUserDetails implements UserDetails {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
+
+    public CustomUserDetails() {} //revise the need of this
 
 
     public CustomUserDetails (User user){
