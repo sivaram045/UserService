@@ -1,5 +1,7 @@
 package com.ecomapp.userservice.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +17,7 @@ public class User extends BaseModel {
     private String Email;
     private String Password;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Role> roles;
     @OneToMany(cascade = CascadeType.REMOVE)
     private List<Token> token;
