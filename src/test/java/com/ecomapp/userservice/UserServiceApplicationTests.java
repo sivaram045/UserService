@@ -22,6 +22,7 @@ class UserServiceApplicationTests {
     @Test
     void contextLoads() {
     }
+
 //        @Test
 //        void storeRegisteredClientToDB() {
 //        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
@@ -40,5 +41,6 @@ class UserServiceApplicationTests {
 //
 //                registeredClientRepository.save(oidcClient);
 //    }
+
 
 }
