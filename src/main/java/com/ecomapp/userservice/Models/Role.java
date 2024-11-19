@@ -1,9 +1,7 @@
 package com.ecomapp.userservice.Models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +12,8 @@ import java.util.List;
 @Setter
 public class Role extends BaseModel {
     private String Title;
-    @ManyToMany(mappedBy = "roles" , cascade = CascadeType.PERSIST)
-    @JsonBackReference
-    private List<User> users;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }

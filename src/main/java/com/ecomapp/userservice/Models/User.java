@@ -16,7 +16,7 @@ public class User extends BaseModel {
     @Column(unique = true)
     private String Email;
     private String Password;
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy ="user",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Role> roles;
     @OneToMany(cascade = CascadeType.REMOVE)

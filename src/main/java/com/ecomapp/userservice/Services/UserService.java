@@ -1,5 +1,7 @@
 package com.ecomapp.userservice.Services;
 
+import com.ecomapp.userservice.DTOs.RoleDTO;
+import com.ecomapp.userservice.Models.Role;
 import com.ecomapp.userservice.Models.Token;
 import com.ecomapp.userservice.Models.User;
 import com.ecomapp.userservice.Repositories.TokenRepository;
@@ -11,10 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Date;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -114,5 +113,22 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAllBy();
+    }
+
+    public User updateUser(long id, RoleDTO roles) {
+        Optional<User> optionalUser = userRepository.findUserById(id);
+        if(optionalUser.isEmpty()) {
+            throw new NoSuchElementException("User by id: " + id + " doesn't exist..!");
+        }
+        User user = optionalUser.get();
+        List<Role> roleList = new ArrayList<>();
+        for(String role: roles.getRoles()) {
+            Role newRole = new Role();
+            //newRole.setRole(role);
+            newRole.setTitle(role);
+            roleList.add(newRole);
+        }
+        user.setRoles(roleList);
+        return userRepository.save(user);
     }
 }

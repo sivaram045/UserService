@@ -23,8 +23,9 @@ class UserServiceApplicationTests {
     void contextLoads() {
     }
 
-//        @Test
-//        void storeRegisteredClientToDB() {
+
+//    @Test
+//    void storeRegisteredClientToDB() {
 //        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
 //                .clientId("oidc-client")
 //                .clientSecret("$2a$12$wZGyvNFJvgJWXu3rJpdHWOV8z5ccGwqMhZRS1nh0Y7lJfkigTVLD2")
@@ -39,8 +40,7 @@ class UserServiceApplicationTests {
 //                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 //                .build();
 //
-//                registeredClientRepository.save(oidcClient);
+//        registeredClientRepository.save(oidcClient);
 //    }
-
 
 }

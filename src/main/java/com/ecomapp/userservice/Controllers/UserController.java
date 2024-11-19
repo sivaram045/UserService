@@ -2,6 +2,7 @@ package com.ecomapp.userservice.Controllers;
 
 import com.ecomapp.userservice.DTOs.LoginDTO;
 import com.ecomapp.userservice.DTOs.LogoutDTO;
+import com.ecomapp.userservice.DTOs.RoleDTO;
 import com.ecomapp.userservice.DTOs.SignUpDTO;
 import com.ecomapp.userservice.Models.Token;
 import com.ecomapp.userservice.Models.User;
@@ -47,5 +48,10 @@ public class UserController {
     @GetMapping()
     public List<User> getAllUsers () {
         return userService.getAllUsers();
+    }
+
+    @PatchMapping("/addRoles/{id}")
+    public User updateUser (@PathVariable long id, @RequestBody RoleDTO roles) {
+        return userService.updateUser(id, roles);
     }
 }
