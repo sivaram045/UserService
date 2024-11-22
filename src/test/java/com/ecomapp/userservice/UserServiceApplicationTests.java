@@ -24,23 +24,25 @@ class UserServiceApplicationTests {
     }
 
 
-//    @Test
-//    void storeRegisteredClientToDB() {
-//        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-//                .clientId("oidc-client")
-//                .clientSecret("$2a$12$wZGyvNFJvgJWXu3rJpdHWOV8z5ccGwqMhZRS1nh0Y7lJfkigTVLD2")
-//                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-//                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-//                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-//                .redirectUri("https://oauth.pstmn.io/v1/callback") //change to postman url
-//                .postLogoutRedirectUri("https://oauth.pstmn.io/v1/callback")
-//                .scope(OidcScopes.OPENID)
-//                .scope(OidcScopes.PROFILE)
-//                .scope("ADMIN")
-//                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-//                .build();
-//
-//        registeredClientRepository.save(oidcClient);
-//    }
+/*
+    @Test
+    void storeRegisteredClientToDB() {
+        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
+                .clientId("oidc-client")
+                .clientSecret("$2a$12$wZGyvNFJvgJWXu3rJpdHWOV8z5ccGwqMhZRS1nh0Y7lJfkigTVLD2")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .redirectUri("https://oauth.pstmn.io/v1/callback") //change to postman url
+                .postLogoutRedirectUri("https://oauth.pstmn.io/v1/callback")
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE)
+                .scope("ADMIN")
+                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+                .build();
+
+        registeredClientRepository.save(oidcClient);
+    }
+*/
 
 }
